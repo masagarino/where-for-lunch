@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "env BABEL_ENV=server babel-watch server/server.js",
+    "start": "set BABEL_ENV=server babel-watch server/server.js",
     "test": "jest test --config test/jestSetup.js",
     "test-tdd": "jest test --config test/jestSetup.js --watch",
     "jest-update": "jest --updateSnapshot --config test/jestSetup.js",

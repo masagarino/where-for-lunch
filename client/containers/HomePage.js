@@ -18,12 +18,13 @@ class HomePage extends Component {
   }
   render() {
     const { condition, place } = this.props;
+    console.log(Object.keys(condition).length === 1 ? "homepageClick1" : "homepageClick");
     return (
       <div className="homePageWrapper">
         <Place place={place} />
         <div className="searchWrapper">
-          <Condition condition={condition} action={this.handleOnConditionChange}/>
-          <Button onClick={this.handleOnClick} theme="homepageClick" />
+          <Condition condition={condition} action={this.handleOnConditionChange} />
+          <Button onClick={this.handleOnClick} theme={Object.keys(condition).length === 1 ? "homepageClickGrey" : "homepageClick"} />
         </div>
       </div>
     );
