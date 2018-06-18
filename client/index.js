@@ -30,7 +30,7 @@ render(
     <App>
       <Router history={history}>
         <Switch>
-          <Route path="/" exact component={HomePage} />
+          <Route path="/" exact component={ HomePage } />
         </Switch>
       </Router>
     </App>

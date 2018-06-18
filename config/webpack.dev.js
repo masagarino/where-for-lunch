@@ -27,7 +27,7 @@ module.exports = {
     noInfo: false,
     historyApiFallback: true,
     publicPath: '/',
-    port: 3001,
+    port: 3000,
   },
   module: {
     rules: [
