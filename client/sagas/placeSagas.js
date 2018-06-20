@@ -7,6 +7,7 @@ import {
 } from 'actions/placeActionTypes';
 
 function* fetchPlace(action) {
+  console.log('action', action);
   try {
     const places = yield call(getPlaceIds, action.payload);
     const randomPlace = getRandom(places);

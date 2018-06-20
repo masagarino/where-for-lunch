@@ -7,6 +7,7 @@ import placeActions from 'actions/placeActions';
 import conditionActions from 'actions/conditionActions';
 import Place from 'components/Place/Place';
 import Condition from 'components/Condition/Condition';
+import ConditionCheckbox from 'components/ConditionCheckbox/ConditionCheckbox';
 
 class HomePage extends Component {
   handleOnClick = () => {
@@ -16,8 +17,13 @@ class HomePage extends Component {
   handleOnConditionChange = (value) => {
     this.props.setRadius(value);
   }
+
+  handleOnClickCheckbox = (value) => {
+    this.props.setPriceRange(value);
+  }
+
   render() {
-    const { condition, place } = this.props;
+    const { condition, place, price } = this.props;
     return (
       <div className="homePageWrapper">
         <Place place={place} />
@@ -25,6 +31,7 @@ class HomePage extends Component {
           <Condition condition={condition} action={this.handleOnConditionChange} />
           <Button onClick={this.handleOnClick} theme={Object.keys(condition).length === 1 ? 'homepageClickGrey' : 'homepageClick'} />
         </div>
+        <ConditionCheckbox price={price} action={this.handleOnClickCheckbox} />
       </div>
     );
   }
@@ -33,19 +40,23 @@ class HomePage extends Component {
 const mapStateToProps = state => ({
   condition: state.condition,
   place: state.place,
+  price: state.price,
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     fetchPlaces: placeActions.fetchPlaces,
     setRadius: conditionActions.setRadius,
+    setPriceRange: conditionActions.setPriceRange,
   }, dispatch);
 
 HomePage.propTypes = {
   condition: PropTypes.object,
   place: PropTypes.object,
+  price: PropTypes.object,
   fetchPlaces: PropTypes.func,
   setRadius: PropTypes.func,
+  setPriceRange: PropTypes.func,
 };
 export default connect(
   mapStateToProps,
