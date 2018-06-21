@@ -7,7 +7,6 @@ import placeActions from 'actions/placeActions';
 import conditionActions from 'actions/conditionActions';
 import Place from 'components/Place/Place';
 import Condition from 'components/Condition/Condition';
-import ConditionCheckbox from 'components/ConditionCheckbox/ConditionCheckbox';
 
 class HomePage extends Component {
   handleOnClick = () => {
@@ -23,15 +22,14 @@ class HomePage extends Component {
   }
 
   render() {
-    const { condition, place, price } = this.props;
+    const { condition, place } = this.props;
     return (
       <div className="homePageWrapper">
         <Place place={place} />
         <div className="searchWrapper">
-          <Condition condition={condition} action={this.handleOnConditionChange} />
+          <Condition condition={condition} action={this.handleOnConditionChange} actionChange={this.handleOnClickCheckbox}/>
           <Button onClick={this.handleOnClick} theme={Object.keys(condition).length === 1 ? 'homepageClickGrey' : 'homepageClick'} />
         </div>
-        <ConditionCheckbox price={price} action={this.handleOnClickCheckbox} />
       </div>
     );
   }
@@ -40,7 +38,6 @@ class HomePage extends Component {
 const mapStateToProps = state => ({
   condition: state.condition,
   place: state.place,
-  price: state.price,
 });
 
 const mapDispatchToProps = dispatch =>
