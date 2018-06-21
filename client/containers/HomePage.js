@@ -16,13 +16,18 @@ class HomePage extends Component {
   handleOnConditionChange = (value) => {
     this.props.setRadius(value);
   }
+
+  handleOnClickCheckbox = (value) => {
+    this.props.setPriceRange(value);
+  }
+
   render() {
     const { condition, place } = this.props;
     return (
       <div className="homePageWrapper">
         <Place place={place} />
         <div className="searchWrapper">
-          <Condition condition={condition} action={this.handleOnConditionChange} />
+          <Condition condition={condition} action={this.handleOnConditionChange} actionChange={this.handleOnClickCheckbox}/>
           <Button onClick={this.handleOnClick} theme={Object.keys(condition).length === 1 ? 'homepageClickGrey' : 'homepageClick'} />
         </div>
       </div>
@@ -39,13 +44,16 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators({
     fetchPlaces: placeActions.fetchPlaces,
     setRadius: conditionActions.setRadius,
+    setPriceRange: conditionActions.setPriceRange,
   }, dispatch);
 
 HomePage.propTypes = {
   condition: PropTypes.object,
   place: PropTypes.object,
+  price: PropTypes.object,
   fetchPlaces: PropTypes.func,
   setRadius: PropTypes.func,
+  setPriceRange: PropTypes.func,
 };
 export default connect(
   mapStateToProps,

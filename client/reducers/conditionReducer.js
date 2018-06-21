@@ -13,6 +13,9 @@ const conditionReducer = handleActions(
       const { latitude, longitude } = action.payload;
       return { ...state, latitude, longitude };
     },
+    [actionTypes.SET_PRICE_RANGE](state, action) {
+      return { ...state, price: action.payload };
+    },
   },
   initialState,
 );
