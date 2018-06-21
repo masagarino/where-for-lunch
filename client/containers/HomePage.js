@@ -23,6 +23,7 @@ class HomePage extends Component {
 
   render() {
     const { condition, place } = this.props;
+    console.log('home', this.props);
     return (
       <div className="homePageWrapper">
         <Place place={place} />

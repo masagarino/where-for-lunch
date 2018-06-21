@@ -24,6 +24,8 @@ export function fromSearchPlacesParams(params) {
     address: params.location.display_address.join(', '),
     categories: params.categories ? params.categories.map(c => c.title) : null,
     reviewCount: params.review_count,
+    photos: params.photos,
+    coordinates: params.coordinates,
   };
   return result;
 }
